@@ -770,9 +770,6 @@
   "restore": {
     "message": "Atjaunot"
   },
-  "restoreAccountWithSeed": {
-    "message": "Atjaunojiet savu kontu ar atkopšanas frāzi"
-  },
   "revealSeedWords": {
     "message": "Parādīt atkopšanas vārdus"
   },
