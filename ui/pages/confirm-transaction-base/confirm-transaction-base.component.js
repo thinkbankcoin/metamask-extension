@@ -579,7 +579,9 @@ export default class ConfirmTransactionBase extends Component {
           disabled={isDisabled()}
           userAcknowledgedGasMissing={userAcknowledgedGasMissing}
           onEdit={
-            renderSimulationFailureWarning ? null : () => this.handleEditGas()
+            renderSimulationFailureWarning || isMultiLayerFeeNetwork
+              ? null
+              : () => this.handleEditGas()
           }
           rows={[
             renderSimulationFailureWarning && simulationFailureWarning(),
