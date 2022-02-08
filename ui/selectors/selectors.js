@@ -810,7 +810,7 @@ export function getIsOptimism(state) {
   );
 }
 
-export function getNetworkSupportsSettingGasPrice(state) {
+export function getNetworkSupportsSettingGasFees(state) {
   return !getIsOptimism(state);
 }
 
