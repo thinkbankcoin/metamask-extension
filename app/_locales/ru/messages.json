@@ -2332,6 +2332,9 @@
   "seedPhraseIntroSidebarBulletOne": {
     "message": "Сохраните в диспетчере паролей."
   },
+  "seedPhraseIntroSidebarBulletThree": {
+    "message": "Храните в банковской ячейке."
+  },
   "seedPhraseIntroSidebarBulletTwo": {
     "message": "Храните в банковском сейфе."
   },
