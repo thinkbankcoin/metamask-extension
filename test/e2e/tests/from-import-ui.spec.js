@@ -293,6 +293,48 @@ describe('Metamask Import UI', function () {
       },
     );
   });
+
+  it('Import Account using private key of an already active account should result in an error', async function () {
+    const testPrivateKey1 =
+      '0x53CB0AB5226EEBF4D872113D98332C1555DC304443BEE1CF759D15798D3C55A9';
+    const ganacheOptions = {
+      accounts: [
+        {
+          secretKey: testPrivateKey1,
+          balance: convertToHexValue(25000000000000000000),
+        },
+      ],
+    };
+
+    await withFixtures(
+      {
+        fixtures: 'import-ui',
+        ganacheOptions,
+        title: this.test.title,
+      },
+      async ({ driver }) => {
+        await driver.navigate();
+        await driver.fill('#password', 'correct horse battery staple');
+        await driver.press('#password', driver.Key.ENTER);
+
+        // Imports an account with private key
+        // choose Create Account from the account menu
+        await driver.clickElement('.account-menu__icon');
+        await driver.clickElement({ text: 'Import Account', tag: 'div' });
+
+        // enter private key',
+        await driver.fill('#private-key-box', testPrivateKey1);
+        await driver.clickElement({ text: 'Import', tag: 'button' });
+
+        // error should occur
+        await driver.waitForSelector({
+          css: '.error',
+          text: "The account you're are trying to import is a dlicate",
+        });
+      },
+    );
+  });
+
   it('Connects to a Hardware wallet', async function () {
     const ganacheOptions = {
       accounts: [
